@@ -1,0 +1,17 @@
+@import "./reset.scss";
+
+.container {
+    padding-top: 88px;
+    max-width: 980px;
+    width: 100%;
+    margin: auto;
+}
+
+.post_list {
+    h3 {
+        font-size: 20px;
+    }
+    p {
+        font-size: 15px;
+    }
+}
