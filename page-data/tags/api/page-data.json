@@ -1,1 +1,1 @@
-{"componentChunkName":"component---src-templates-tags-list-js","path":"/tags/api/","result":{"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/posts/Blog/2020-02-10-web-4/"},"frontmatter":{"title":"Web - API와 REST API 이해하기"}}}]}},"pageContext":{"tag":"API"}}}
+{"componentChunkName":"component---src-templates-tags-list-js","path":"/tags/api/","result":{"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/posts/2020-02-10-web-4/"},"frontmatter":{"title":"Web - API와 REST API 이해하기"}}}]}},"pageContext":{"tag":"API"}}}

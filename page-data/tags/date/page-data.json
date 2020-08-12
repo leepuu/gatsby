@@ -1,1 +1,1 @@
-{"componentChunkName":"component---src-templates-tags-list-js","path":"/tags/date/","result":{"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/posts/Blog/2020-01-14-date-1/"},"frontmatter":{"title":"자바스크립트 - 날짜와 시간의 Date객체"}}}]}},"pageContext":{"tag":"date"}}}
+{"componentChunkName":"component---src-templates-tags-list-js","path":"/tags/date/","result":{"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/posts/2020-01-14-date-1/"},"frontmatter":{"title":"자바스크립트 - 날짜와 시간의 Date객체"}}}]}},"pageContext":{"tag":"date"}}}

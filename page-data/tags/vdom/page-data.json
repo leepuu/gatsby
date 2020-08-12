@@ -1,1 +1,1 @@
-{"componentChunkName":"component---src-templates-tags-list-js","path":"/tags/vdom/","result":{"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/posts/Blog/2020-02-04-web-2/"},"frontmatter":{"title":"Web - DOM과 Virtual DOM"}}}]}},"pageContext":{"tag":"VDOM"}}}
+{"componentChunkName":"component---src-templates-tags-list-js","path":"/tags/vdom/","result":{"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/posts/2020-02-04-web-2/"},"frontmatter":{"title":"Web - DOM과 Virtual DOM"}}}]}},"pageContext":{"tag":"VDOM"}}}
