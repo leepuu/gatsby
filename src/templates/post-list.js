@@ -14,8 +14,8 @@ export default (data) => {
 }
 
 export const query = graphql`
-	query {
-		allMarkdownRemark {
+	query postList($skip: Int!, $limit: Int!) {
+		allMarkdownRemark(limit: $limit, skip: $skip) {
 			totalCount
 			edges {
 				node {

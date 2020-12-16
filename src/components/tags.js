@@ -1,40 +1,34 @@
 import React from "react"
 import PropTypes from "prop-types"
-
-// Utilities
+import styled from "styled-components"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import kebabCase from "lodash/kebabCase"
 
-// Components
-import { Helmet } from "react-helmet"
-import { Link, graphql, useStaticQuery } from "gatsby"
-
-// const TagsPage = ({
-// 	data: {
-// 		allMarkdownRemark: { group },
-// 		site: {
-// 			siteMetadata: { title },
-// 		},
-// 	},
-// }) => (
-// 	<div>
-// 		<Helmet title={title} />
-// 		<div>
-// 			<h1>Tags</h1>
-// 			<ul>
-// 				{group.map((tag) => (
-// 					<li key={tag.fieldValue}>
-// 						<Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-// 							{tag.fieldValue} ({tag.totalCount})
-// 						</Link>
-// 					</li>
-// 				))}
-// 			</ul>
-// 		</div>
-// 	</div>
-// )
+const Tag = styled.div`
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		li {
+			a {
+				display: inline-block;
+				padding: 0 10px;
+				line-height: 1.7;
+				font-size: 13px;
+				background: #ecedf1;
+				color: #767a90;
+				margin: 5px 5px 0 0;
+				transition: all 0.2s ease-in-out;
+				&:hover {
+					background: #767a90;
+					color: #ecedf1;
+				}
+			}
+		}
+	}
+`
 
 const TagsPage = ({ name, id }) => {
-	const query = useStaticQuery(graphql`
+	const tagQuery = useStaticQuery(graphql`
 		{
 			site {
 				siteMetadata {
@@ -50,13 +44,16 @@ const TagsPage = ({ name, id }) => {
 		}
 	`)
 	return (
-		<div>
-			{query.allMarkdownRemark.group.map((tag) => (
-				<Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-					{tag.fieldValue} ({tag.totalCount})
-				</Link>
-			))}
-		</div>
+		<Tag>
+			<h3>Tags</h3>
+			<ul>
+				{tagQuery.allMarkdownRemark.group.map((tag, idx) => (
+					<li key={idx}>
+						<Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>#{tag.fieldValue}</Link>
+					</li>
+				))}
+			</ul>
+		</Tag>
 	)
 }
 

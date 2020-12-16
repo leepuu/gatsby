@@ -1,38 +1,61 @@
 import React from "react"
 import PropTypes from "prop-types"
+import Common from "../components/common"
+import Tags from "../components/tags"
+import RecentPost from "../components/recentPost"
+import styled from "styled-components"
 
 // Components
 import { Link, graphql } from "gatsby"
+const Kv = styled.div`
+	background: url(/kv/main.jpg) center center no-repeat;
+`
 
-const Tags = ({ pageContext, data }) => {
+const TagList = ({ pageContext, data }) => {
 	const { tag } = pageContext
 	const { edges, totalCount } = data.allMarkdownRemark
-	const tagHeader = `${totalCount} post${totalCount === 1 ? "" : "s"} tagged with "${tag}"`
 
 	return (
-		<div>
-			<h1>{tagHeader}</h1>
-			<ul>
-				{edges.map(({ node }) => {
-					const { slug } = node.fields
-					const { title } = node.frontmatter
-					return (
-						<li key={slug}>
-							<Link to={slug}>{title}</Link>
-						</li>
-					)
-				})}
-			</ul>
-			{/*
-              This links to a page that does not yet exist.
-              You'll come back to it!
-            */}
-			<Link to="/tags">All tags</Link>
-		</div>
+		<>
+			<Common></Common>
+			<div className="container">
+				<Kv className="kv_title">
+					<div className="title">
+						<h3>#{tag}</h3>
+						<p>
+							{totalCount} post{totalCount === 1 ? "" : "s"}
+						</p>
+					</div>
+				</Kv>
+				<div className="inner_content">
+					<div className="content">
+						{edges.map(({ node }) => {
+							const { slug } = node.fields
+
+							return (
+								<div class="post_list" key={slug}>
+									<Link to={slug}>
+										<h4>
+											{node.frontmatter.title}
+											<span>{node.frontmatter.date}</span>
+										</h4>
+										<p>{node.excerpt}</p>
+									</Link>
+								</div>
+							)
+						})}
+					</div>
+					<div className="sidebar">
+						<RecentPost></RecentPost>
+						<Tags></Tags>
+					</div>
+				</div>
+			</div>
+		</>
 	)
 }
 
-Tags.propTypes = {
+TagList.propTypes = {
 	pageContext: PropTypes.shape({
 		tag: PropTypes.string.isRequired,
 	}),
@@ -55,7 +78,7 @@ Tags.propTypes = {
 	}),
 }
 
-export default Tags
+export default TagList
 
 export const pageQuery = graphql`
 	query($tag: String) {
@@ -68,7 +91,9 @@ export const pageQuery = graphql`
 					}
 					frontmatter {
 						title
+						date
 					}
+					excerpt(pruneLength: 200)
 				}
 			}
 		}

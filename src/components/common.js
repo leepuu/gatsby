@@ -5,10 +5,10 @@ import Header from "./header"
 
 export default ({ children }) => {
 	return (
-		<div>
+		<>
 			<Header></Header>
 
 			{children}
-		</div>
+		</>
 	)
 }
