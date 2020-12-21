@@ -5,6 +5,7 @@ import RecentPost from "../components/recentPost"
 import Posts from "../components/posts"
 
 import styled from "styled-components"
+import { Helmet } from "react-helmet"
 
 const Kv = styled.div`
 	background: url(/kv/main.jpg) center center no-repeat;
@@ -24,6 +25,7 @@ const Kv = styled.div`
 export default () => {
 	return (
 		<>
+			<Helmet title="푸다닥 개발뽀개기" defer={false} />
 			<Common></Common>
 			<div className="container">
 				<Kv className="kv_title">

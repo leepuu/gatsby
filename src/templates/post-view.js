@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import Common from "../components/common"
 import Tags from "../components/tags"
 import RecentPost from "../components/recentPost"
+import { Helmet } from "react-helmet"
 import "../scss/posts.scss"
 
 const PostTitle = styled.div`
@@ -15,6 +16,7 @@ export default ({ data }) => {
 
 	return (
 		<div>
+			<Helmet title={post.frontmatter.title} defer={false} />
 			<Common></Common>
 
 			<div className="container">
