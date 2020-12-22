@@ -94,3 +94,8 @@
 		}
 	}
 }
+
+.token.interpolation,
+.token.parameter {
+	color: $main-color;
+}
