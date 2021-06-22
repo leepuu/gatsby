@@ -42,7 +42,7 @@ Less, Sass, Stylus 같이 다양한 css 전처리기가 있지만<br>
 <h4>1. 변수</h4>
 <p>이제는 css에서도 사용이 가능하지만 내 기준 Scss의 가장 큰 장점은 변수였다.<br>
 한 번 변수를 선언하면 </p>
-<deckgo-highlight-code language="terminal"  terminal="carbon" theme="one-dark" >
+<deckgo-highlight-code language="bash"  terminal="carbon" theme="one-dark" >
           <code slot="code">$ npm install --global gulp-cli
 $ gulp -v
 CLI version: 2.3.0
@@ -54,7 +54,7 @@ Local version: 4.0.2</code>
 명령어는 내가 실행할 디렉토리에서 실행해야됨!! </p>
 <p>그러면 아래 상황들이 나오는데 입맛에 맞게 설정하면 된다.</p>
 <p>나는 일단 설치가 목적이기 때문에 엔터만 누른다. (나중에 수정 가능)</p>
-<deckgo-highlight-code language="terminal"  terminal="carbon" theme="one-dark" >
+<deckgo-highlight-code language="bash"  terminal="carbon" theme="one-dark" >
           <code slot="code">$ npm init
 
 package name: (test)
@@ -70,7 +70,7 @@ license: (ISC)</code>
 <br>
 <p>전역에도 설치했지만 모듈을 설치하기 위해서 같은 디렉토리에<br>
 아래 명령어를 입력한다.</p>
-<deckgo-highlight-code language="terminal"  terminal="carbon" theme="one-dark" >
+<deckgo-highlight-code language="bash"  terminal="carbon" theme="one-dark" >
           <code slot="code">$ npm install --save-dev gulp</code>
         </deckgo-highlight-code>
 <p><br><br></p>
@@ -88,7 +88,7 @@ function defaultTask(cb) {
 exports.default = defaultTask</code>
         </deckgo-highlight-code>
 <p>이제 터미널에 gulp를 입력해주면 아래 처럼 나온다.</p>
-<deckgo-highlight-code language="terminal"  terminal="carbon" theme="one-dark" >
+<deckgo-highlight-code language="bash"  terminal="carbon" theme="one-dark" >
           <code slot="code">$ gulp
 [14:59:59] Using gulpfile D:\Study\test2\gulpfile.js
 [14:59:59] Starting &#39;default&#39;...
@@ -233,7 +233,7 @@ function js(){
 <ul>
 <li><a href="https://browsersync.io/docs/options/">browsersync 옵션</a>  </li>
 </ul>
-<deckgo-highlight-code language="terminal"  terminal="carbon" theme="one-dark" >
+<deckgo-highlight-code language="bash"  terminal="carbon" theme="one-dark" >
           <code slot="code">$ npm install browser-sync --save-dev</code>
         </deckgo-highlight-code>
 <deckgo-highlight-code language="javascript"  terminal="carbon" theme="one-dark" >
