@@ -29,33 +29,17 @@ module.exports = {
 			options: {
 				plugins: [
 					{
-						resolve: `gatsby-remark-prismjs`,
+						resolve: `gatsby-transformer-remark`,
 						options: {
-							classPrefix: "language-",
-							inlineCodeMarker: null,
-							aliases: {},
-							showLineNumbers: false,
-							noInlineHighlight: false,
-							languageExtensions: [
+							plugins: [
 								{
-									language: "superscript",
-									extend: "javascript",
-									definition: {
-										superscript_types: /(SuperType)/,
-									},
-									insertBefore: {
-										function: {
-											superscript_keywords: /(superif|superelse)/,
-										},
-									},
+									resolve: `gatsby-remark-highlight-code`,
+									options: {
+										terminal: 'carbon',
+										theme: 'one-dark'
+									}
 								},
 							],
-							prompt: {
-								user: "root",
-								host: "localhost",
-								global: false,
-							},
-							escapeEntities: {},
 						},
 					},
 				],

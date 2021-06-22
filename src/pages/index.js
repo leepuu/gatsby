@@ -6,6 +6,8 @@ import Posts from "../components/posts"
 
 import styled from "styled-components"
 import { Helmet } from "react-helmet"
+import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader';
+
 
 const Kv = styled.div`
 	background: url(/kv/main.jpg) center center no-repeat;
@@ -46,3 +48,4 @@ export default () => {
 		</>
 	)
 }
+deckDeckGoHighlightElement();
