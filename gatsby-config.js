@@ -29,18 +29,11 @@ module.exports = {
 			options: {
 				plugins: [
 					{
-						resolve: `gatsby-transformer-remark`,
+						resolve: `gatsby-remark-highlight-code`,
 						options: {
-							plugins: [
-								{
-									resolve: `gatsby-remark-highlight-code`,
-									options: {
-										terminal: 'carbon',
-										theme: 'one-dark'
-									}
-								},
-							],
-						},
+							terminal: 'carbon',
+							theme: 'one-dark'
+						}
 					},
 				],
 			},
