@@ -1,7 +1,7 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import styled from "styled-components"
 import { Link, graphql, useStaticQuery } from "gatsby"
-// import classNames from "classnames"
+import classNames from "classnames"
 
 const TitleBox = styled.header`
 	padding: 25px 30px;
@@ -47,18 +47,18 @@ const Nav = styled.nav`
 `
 
 const Header = () => {
-	// const [on, setOn] = useState(false)
-	// const scrollEvent = () => {
-	// 	window.addEventListener("scroll", () => {
-	// 		let scrollTop = document.documentElement.scrollTop;
+	const [on, setOn] = useState(false);
+	useEffect(() => {
+		scrollEvent()	
+	}, []);
 
-	// 		if (scrollTop > 350) {
-	// 			setOn(true)
-	// 		}else{
-	// 			setOn(false)
-	// 		}
-	// 	})
-	// }
+	const scrollEvent = () => {
+		window.addEventListener("scroll", () => {
+			let scrollTop = document.documentElement.scrollTop;
+			scrollTop > 350 ? setOn(true) : setOn(false);
+		})
+	}
+	
 	const data = useStaticQuery(graphql`
 		query {
 			site {
@@ -68,11 +68,10 @@ const Header = () => {
 			}
 		}
 	`)
-
-	// scrollEvent();
+	
 
 	return (
-		<TitleBox>
+		<TitleBox className={classNames({on})}>
 			<h1>
 				<Link
 					to="/"
@@ -95,6 +94,5 @@ const Header = () => {
 		</TitleBox>
 	)
 }
-console.log()
 
 export default Header
