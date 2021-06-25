@@ -11,7 +11,7 @@ const Kv = styled.div`
 	background: url(/kv/main.jpg) center center no-repeat;
 `
 
-const TagList = ({ pageContext, data }) => {
+const tagList = ({ pageContext, data }) => {
 	const { tag } = pageContext
 	const { edges, totalCount } = data.allMarkdownRemark
 
@@ -33,7 +33,7 @@ const TagList = ({ pageContext, data }) => {
 							const { slug } = node.fields
 
 							return (
-								<div class="post_list" key={slug}>
+								<div className="post_list" key={slug}>
 									<Link to={slug}>
 										<h4>
 											{node.frontmatter.title}
@@ -55,7 +55,7 @@ const TagList = ({ pageContext, data }) => {
 	)
 }
 
-TagList.propTypes = {
+tagList.propTypes = {
 	pageContext: PropTypes.shape({
 		tag: PropTypes.string.isRequired,
 	}),
@@ -78,7 +78,7 @@ TagList.propTypes = {
 	}),
 }
 
-export default TagList
+export default tagList
 
 export const pageQuery = graphql`
 	query($tag: String) {

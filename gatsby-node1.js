@@ -20,7 +20,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 	const blogPostTemplate = path.resolve("./src/templates/post-view.js")
 	const tagTemplate = path.resolve("./src/templates/tags-list.js")
-	const blogListTemplate = path.resolve("./src/templates/post-list.js")
 
 	const result = await graphql(`
 		{
@@ -51,21 +50,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	}
 
 	const posts = result.data.postsRemark.edges
-	const postsPerPage = 10
-	const numPages = Math.ceil(posts.length / postsPerPage)
-
-	Array.from({length: numPages}).forEach((_, i) => {
-		createPage({
-			path: i === 0 ? `/` : `/${i + 1}`,
-			component: blogListTemplate,
-			context: {
-				limit: postsPerPage,
-				skip: i * postsPerPage,
-				numPages,
-				currentPage: i + 1,
-			}
-		})
-	})
 
 	// Create post detail pages
 	posts.forEach(({ node }) => {
