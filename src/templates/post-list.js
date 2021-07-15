@@ -7,6 +7,10 @@ import styled from "styled-components"
 import classNames from "classnames"
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io"
 
+import { Helmet } from "react-helmet"
+import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader';
+
+
 // Components
 const Kv = styled.div`
 	background: url(/kv/main.jpg) center center no-repeat;
@@ -21,6 +25,7 @@ const postList = ({ pageContext, data }) => {
 
 	return (
 		<>
+			<Helmet title="푸다닥 개발뽀개기" defer={false} />
 			<Common></Common>
 			<div className="container">
 				<Kv className="kv_title">
@@ -74,7 +79,8 @@ const postList = ({ pageContext, data }) => {
 	)
 }
 
-export default postList
+export default postList;
+deckDeckGoHighlightElement();
 
 export const listQuery = graphql`
 	query($limit: Int!, $skip: Int!) {
