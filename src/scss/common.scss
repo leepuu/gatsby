@@ -3,6 +3,7 @@
 
 .container {
 	width: 100%;
+	padding-bottom: 120px;
 }
 
 .kv_title {
@@ -58,10 +59,10 @@
 		width: 70%;
 		padding: 0 20px;
 		.post_list {
-			margin-bottom: 32px;
-			padding-bottom: 32px;
-			&:not(:last-child) {
-				border-bottom: 1px solid #eee;
+			& + .post_list {
+				margin-top: 32px;
+				padding-top: 32px;
+				border-top: 1px solid #eee;
 			}
 			h4 {
 				font-size: 20px;
@@ -77,6 +78,31 @@
 			p {
 				font-size: 14px;
 				line-height: 1.56;
+			}
+		}
+		.pagination {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			max-width: 480px;
+			width: 100%;
+			margin: 0 auto;
+			padding-top: 80px;
+			font-weight: 700;
+			a {
+				color: #ccc;
+			}
+			.active {
+				a {
+					color: #555;
+				}
+			}
+			.btn_arrow {
+				font-size: 26px;
+				color: #555;
+				&.disable {
+					visibility: hidden;
+				}
 			}
 		}
 	}

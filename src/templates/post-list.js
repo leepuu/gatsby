@@ -4,6 +4,8 @@ import Common from "../components/common"
 import Tags from "../components/tags"
 import RecentPost from "../components/recentPost"
 import styled from "styled-components"
+import classNames from "classnames"
+import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io"
 
 // Components
 const Kv = styled.div`
@@ -14,7 +16,7 @@ const postList = ({ pageContext, data }) => {
 	const { currentPage, numPages } = pageContext
 	const isFirst = currentPage === 1
 	const isLast = currentPage === numPages
-	const prevPage = currentPage - 1 === 1 ? '' : (currentPage - 1).toString()
+	const prevPage = currentPage - 1 === 1 ? "" : (currentPage - 1).toString()
 	const nextPage = (currentPage + 1).toString()
 
 	return (
@@ -43,46 +45,24 @@ const postList = ({ pageContext, data }) => {
 								</div>
 							)
 						})}
-						<ul
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            listStyle: 'none',
-            padding: 0,
-          }}
-        >
-          {!isFirst && (
-							<Link to={`/${prevPage}`} rel="prev">
-								← Previous Page
-							</Link>
-						)}
-						{Array.from({ length: numPages }, (_, i) => (
-							<li
-								key={`pagination-number${i + 1}`}
-								style={{
-									margin: 0,
-								}}
-							>
-								<Link
-									to={`/${i === 0 ? '' : i + 1}`}
-									style={{
-										textDecoration: 'none',
-										color: i + 1 === currentPage ? '#ffffff' : '',
-										background: i + 1 === currentPage ? '#007acc' : '',
-									}}
-								>
-									{i + 1}
+						<ul className="pagination">
+							<li>
+								<Link to={`/${prevPage}`} rel="prev" className={classNames("btn_arrow btn_prev", { disable: isFirst })}>
+									<IoMdArrowDropleft />
 								</Link>
 							</li>
-						))}
-						{!isLast && (
-							<Link to={`/${nextPage}`} rel="next">
-								Next Page →
-							</Link>
-						)}
-					</ul>
+
+							{Array.from({ length: numPages }, (_, i) => (
+								<li key={i + 1} className={classNames({ active: i + 1 === currentPage })}>
+									<Link to={`/${i === 0 ? "" : i + 1}`}>{i + 1}</Link>
+								</li>
+							))}
+							<li>
+								<Link to={`/${nextPage}`} rel="next" className={classNames("btn_arrow btn_next", { disable: isLast })}>
+									<IoMdArrowDropright />
+								</Link>
+							</li>
+						</ul>
 					</div>
 					<div className="sidebar">
 						<RecentPost></RecentPost>
@@ -94,25 +74,25 @@ const postList = ({ pageContext, data }) => {
 	)
 }
 
-export default postList;
+export default postList
 
 export const listQuery = graphql`
-		query($limit: Int!, $skip: Int! ){
-			allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }, limit: $limit ,skip: $skip) {
-				edges {
-					node {
-						frontmatter {
-							title
-							date
-							tags
-						}
-						id
-						excerpt(pruneLength: 200)
-						fields {
-							slug
-						}
+	query($limit: Int!, $skip: Int!) {
+		allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }, limit: $limit, skip: $skip) {
+			edges {
+				node {
+					frontmatter {
+						title
+						date
+						tags
+					}
+					id
+					excerpt(pruneLength: 200)
+					fields {
+						slug
 					}
 				}
 			}
 		}
+	}
 `
